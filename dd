@@ -1,0 +1,60 @@
+import { Component } from '@angular/core';
+import{NewserviceService} from './newservice.service'; 
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  providers:[NewserviceService]
+})
+export class AppComponent {  
+  title = 'Cisin'; 
+ngIf=true;
+ emp:any[]; 
+  clickme(){ alert("Hi"); }
+//NgFor
+  Students:any[]=[{ 'name': 'Krishna Kumar'}, {'name': 'Rahul Kumar 2'}, {'name': 'Rahul Kumar 3'}, {'name': 'Rahul Kumar 4'},
+    {'name': 'Rahul Kumar 5'},
+  ];
+  conpanyName:any[]=[{'name': 'A'},{'name': 'B'},{'name': 'C'},];  schoolName:any[]=[ { 'name': 'H.S.S.D', },
+	{ 'collage': 'B.G.C' } ] 
+// end NgFor 
+// Track by example---------------  
+// Grouping with ngFor 
+Contrydetails:any[]=[
+	{ 'Contry': 'India',
+		'people':[ { "name":"Ajeet Kumar" }, { "name":"Chandan Singh" }, { "name":"Mohan Singh" }, ] }, 
+	{ 'Contry': 'Uk', 'people':[ { "name":"ABC" }, { "name":"XYZ" }, { "name":"QRS" }, ] },
+];
+// end Grouping with ngFor 
+// Ng Style 
+getColor(country: any) { switch (country) { case "UK": return "green"; case "USA": return "blue"; case "HK": return "red"; }
+  } 
+  people: any[] = [
+    { name: "Douglas  Pace", country: "UK" }, { name: "Mcleod  Mueller", country: "USA" },
+    { name: "Day  Meyers", country: "HK" }, { name: "Aguirre  Ellis", country: "UK" },
+    { name: "Cook  Tyson", country: "USA" }
+  ];
+ // end Ng Style  
+ // Ng Class 
+  users=[ 'Ram', 'Krishna', 'Anmol', 'Mohan' ];
+// end Ng Class
+getcssclass(flasg:string){
+	let cssclass;
+//	let cssclass: { one: boolean; two: boolean; };
+	if(flasg=="mode") { cssclass={ 'one':true, 'two':true } }else{ cssclass={ 'one':false, 'two':true } } return cssclass; }
+
+// Event Binding
+showdata(){ console.log("Hi"); }
+// end Event Binding 
+// Two way Data Binding
+data:string='Cisin'; data1:string='CisinLabs'; 
+// end Two way Data Binding 
+// Pipes  
+employees:any[]=[
+		{ code:'emp001',name:'Krishna',salary:8500,dob:'02may' },{ code:'emp002',name:'Ram',salary:10500,dob:'10may' },	{ code:'emp003',name:'Ravi',salary:9000,dob:'15Aug' },
+		{ code:'emp004',name:'ram 2',salary:10000,dob:'05may' },  ]; 
+// end Pipes 
+// NewserviceService 
+kj: any; constructor(private _newservice:NewserviceService){} 
+ngOnInit(){ this.kj=this._newservice.display();   this.emp=this.employees;   } 
+}
